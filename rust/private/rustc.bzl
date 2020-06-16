@@ -408,7 +408,7 @@ def _construct_compile_command(
         if src != dst:
             maybe_rename = " && /bin/mv {src} {dst}".format(src=src, dst=dst)
 
-    return '{}{}{} "$@" --remap-path-prefix="$(pwd)"=__bazel_redacted_pwd{}{}'.format(
+    return '{}{}{} "$@{}" --remap-path-prefix="$(pwd)"=__bazel_redacted_pwd{}'.format(
         rustc_env_expansion,
         command_env,
         toolchain.rustc.path,
