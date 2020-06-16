@@ -388,7 +388,7 @@ def _construct_compile_command(
         out_dir):
     rustc_env_expansion = ("export $(cat %s);" % build_info.rustc_env.path) if build_info else ""
     command_env = _create_command_env(ctx, out_dir)
-    build_flags_expansion = (" $(cat '%s')" % build_info.flags.path) if build_info else ""
+    build_flags_expansion = (" \"$(cat %s)\"" % build_info.flags.path) if build_info else ""
     # Handle that the binary name and crate name may be different.
     #
     # If a target name contains a - then cargo (and rules_rust) will generate a
